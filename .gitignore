@@ -1,0 +1,6 @@
+# ---- IntelliJ IDEA
+*.iws
+*.iml
+*.ipr
+.idea/
+out/# Created by .ignore support plugin (hsz.mobi)

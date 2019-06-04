@@ -1,0 +1,32 @@
+image:
+  name: atlassian/default-image:2
+
+release: &release
+  step:
+    name: Push and Tag
+    image: python:3.6.7
+    script:
+      - pip install semversioner==0.6.16
+      - ./ci-scripts/bump-version.sh
+      - ./ci-scripts/docker-release.sh sonarsource/$BITBUCKET_REPO_SLUG
+      - ./ci-scripts/git-push.sh
+    services:
+      - docker
+
+build-docker-qa: &build-docker-qa
+  step:
+    name: Create and push Docker image for QA
+    image: python:3.6.7
+    script:
+      - pip install semversioner==0.6.16
+      - ./ci-scripts/bump-version.sh
+      - ./ci-scripts/docker-release.sh sonarsource/$BITBUCKET_REPO_SLUG QA
+    services:
+      - docker
+
+pipelines:
+  custom:
+    release:
+      - <<: *release
+    build-docker-qa:
+      - <<: *build-docker-qa
