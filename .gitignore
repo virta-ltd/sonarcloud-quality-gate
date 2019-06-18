@@ -4,3 +4,7 @@
 *.ipr
 .idea/
 out/# Created by .ignore support plugin (hsz.mobi)
+
+# Python
+__pycache__
+venv

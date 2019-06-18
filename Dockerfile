@@ -1,7 +1,10 @@
-FROM alpine:3.8
-RUN apk update && apk add bash curl jq
+FROM python:3.7-slim
 
-COPY task /usr/bin/
-RUN chmod 755 /usr/bin/check-quality-gate.sh
+COPY pipe /usr/bin/
+COPY pipe.yml /usr/bin/
 
-ENTRYPOINT ["/usr/bin/check-quality-gate.sh"]
+WORKDIR /usr/bin
+
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["python3", "/usr/bin/pipe.py"]

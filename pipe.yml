@@ -1,7 +1,9 @@
 name: SonarCloud Quality Gate check
 description: Check if a project / analysis passed the quality gate check
 image: sonarsource/sonarcloud-quality-gate:0.1.0
-repository: https://bitbucket.org/sonartestteam3/sonarcloud-quality-gate
+variables:
+  - name: SONAR_TOKEN
+    default: '${SONAR_TOKEN}'
 repository: https://bitbucket.org/sonarsource/sonarcloud-quality-gate
 maintainer: contact@sonarsource.com
 icon: https://sonarcloud.io/images/sonarcloud-square-logo.svg
