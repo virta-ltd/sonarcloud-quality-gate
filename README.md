@@ -8,6 +8,8 @@ Add the following snippet to the script section of your `bitbucket-pipelines.yml
 
 ```yaml
 - pipe: sonarsource/sonarcloud-quality-gate:0.1.0
+  # variables:
+  #   SONAR_QUALITY_GATE_TIMEOUT: '<int>'  # Optional
 ```
 
 ## Variables
