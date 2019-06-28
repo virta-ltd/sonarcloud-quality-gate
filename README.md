@@ -9,6 +9,7 @@ Add the following snippet to the script section of your `bitbucket-pipelines.yml
 ```yaml
 - pipe: sonarsource/sonarcloud-quality-gate:0.1.0
   # variables:
+  #   SONAR_TOKEN: '<string>'  # Optional
   #   SONAR_QUALITY_GATE_TIMEOUT: '<int>'  # Optional
 ```
 
@@ -49,6 +50,8 @@ A bit more advanced example:
   variables:
     SONAR_QUALITY_GATE_TIMEOUT: 180  # 3 minutes
 ```
+
+This example overrides the default timeout, waiting for the quality gate result for up to 3 minutes instead of the default 5.
 
 ## Support
 
