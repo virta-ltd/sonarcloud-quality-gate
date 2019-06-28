@@ -1,6 +1,6 @@
 name: SonarCloud Quality Gate check
 description: Check if a project / analysis passed the quality gate check
-image: sonarsource/sonarcloud-quality-gate:0.1.0
+image: sonarsource/sonarcloud-quality-gate:0.1.1
 variables:
   - name: SONAR_TOKEN
     default: '${SONAR_TOKEN}'

@@ -7,7 +7,7 @@ Check the Quality Gate of your code with [SonarCloud](https://sonarcloud.io) to 
 Add the following snippet to the script section of your `bitbucket-pipelines.yml` file:
 
 ```yaml
-- pipe: sonarsource/sonarcloud-quality-gate:0.1.0
+- pipe: sonarsource/sonarcloud-quality-gate:0.1.1
   # variables:
   #   SONAR_TOKEN: '<string>'  # Optional
   #   SONAR_QUALITY_GATE_TIMEOUT: '<int>'  # Optional
@@ -40,13 +40,13 @@ To use this pipe you must have the [SonarCloud Scan pipe][sonarcloud-scan-pipe] 
 Basic example:
 
 ```yaml
-- pipe: sonarsource/sonarcloud-quality-gate:0.1.0
+- pipe: sonarsource/sonarcloud-quality-gate:0.1.1
 ```
 
 A bit more advanced example:
 
 ```yaml
-- pipe: sonarsource/sonarcloud-quality-gate:0.1.0
+- pipe: sonarsource/sonarcloud-quality-gate:0.1.1
   variables:
     SONAR_QUALITY_GATE_TIMEOUT: 180  # 3 minutes
 ```
