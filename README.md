@@ -2,6 +2,8 @@
 
 Check the Quality Gate of your code with [SonarCloud](https://sonarcloud.io) to ensure good quality before releasing or deploying new features.
 
+To use this pipe you must have the [SonarCloud Scan pipe][sonarcloud-scan-pipe] earlier in the pipeline.
+
 ## YAML Definition
 
 Add the following snippet to the script section of your `bitbucket-pipelines.yml` file:
