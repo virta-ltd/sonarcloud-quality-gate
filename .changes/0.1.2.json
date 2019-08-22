@@ -1,0 +1,6 @@
+[
+  {
+    "description": "Update readme to clarify the relation with the SonarCloud Scan Pipe",
+    "type": "patch"
+  }
+]
