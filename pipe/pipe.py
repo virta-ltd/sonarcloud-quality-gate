@@ -163,10 +163,14 @@ class QualityGateStatus:
 
 class CeTask:
     def __init__(self, obj):
+        """
+        >>> CeTask({"task": {"status": "IN_PROGRESS"}}).is_completed()
+        False
+        """
         try:
             self.status = obj['task']['status']
             self.completed = self.status not in ('IN_PROGRESS', 'PENDING')
-            self.analysis_id = obj['task']['analysisId']
+            self.analysis_id = obj['task'].get('analysisId')
         except:
             raise QualityCheckError("Could not parse compute engine task from json: {}".format(json.dumps(obj)))
 

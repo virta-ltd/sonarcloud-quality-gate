@@ -42,6 +42,8 @@ For example, a change that will bump the minor version, say from 0.0.0 to 0.1.0:
 
     semversioner add-change --type minor --description 'Check quality gate'
 
+The `add-change` commands will create files in `.changes` directory, commit them to version control.
+
 To test what will happen during the release, try this (will modify working tree but not commit):
 
     semversioner release
