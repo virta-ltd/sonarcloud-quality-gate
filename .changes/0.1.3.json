@@ -1,0 +1,6 @@
+[
+  {
+    "description": "Do not crash when task response does not contain analysisId",
+    "type": "patch"
+  }
+]
