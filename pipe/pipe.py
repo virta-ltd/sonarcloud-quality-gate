@@ -275,10 +275,12 @@ def get_quality_gate_status_url(ce_task):
 def main(pipe):
     sonar_token = get_variable('SONAR_TOKEN', required=True)
     timeout_seconds = get_variable('SONAR_QUALITY_GATE_TIMEOUT', required=False, default=DEFAULT_TIMEOUT_SECONDS)
+    scanner_report_path = get_variable('SONAR_SCANNER_REPORT_PATH', required=False, default=None)
 
     client = SonarCloudClient(sonar_token)
 
-    scanner_report_path = get_scanner_report_path()
+    if scanner_report_path is None:
+        scanner_report_path = get_scanner_report_path()
     scanner_report_text = get_scanner_report_text(scanner_report_path)
     ce_task_url = extract_ce_task_url(scanner_report_text)
 
