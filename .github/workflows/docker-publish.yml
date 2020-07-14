@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on: 
+  release:
+    types: [created, edited]
+
+env:
+  DOCKER_IMAGE_PATH: virtaltd/sonarcloud-quality-gate
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Export Tag Name
+      run: |
+           echo "::set-env name=NEW_TAG::${GITHUB_REF/refs\/tags\//}"
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag $DOCKER_IMAGE_PATH:${{ env.NEW_TAG }}
+    - name: Docker Login
+      run: docker login --username "${{ secrets.DOCKER_USERNAME }}" --password "${{ secrets.DOCKER_PASSWORD }}"
+    - name: Docker Push
+      run: docker push $DOCKER_IMAGE_PATH:${{ env.NEW_TAG }}
+    - name: Docker Tag Latest
+      run: docker tag $DOCKER_IMAGE_PATH:${{ env.NEW_TAG }} $DOCKER_IMAGE_PATH:latest
+    - name: Docker Tag Latest Push
+      run: docker push $DOCKER_IMAGE_PATH:latest
